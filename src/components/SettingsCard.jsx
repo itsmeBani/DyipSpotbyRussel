@@ -5,6 +5,9 @@ import {
     Typography,
     Avatar,
   } from "@material-tailwind/react";
+import {useContext} from "react";
+import {CurrentUserContext} from "../ContextProvider/CurrentUser.jsx";
+import useCheckRole from "../CustomHooks/useCheckRole.js";
 
    
   function StarIcon() {
@@ -25,18 +28,23 @@ import {
   }
    
   export default function SettingsCard() {
-    return (
+      const {CurrentUser}=useContext(CurrentUserContext)
+      const encryptionKey = import.meta.env.VITE_ENCRYPTION_KEY;
+      const decryptedRole = useCheckRole('role', encryptionKey);
+
+      console.log(CurrentUser)
+      return (
       <div   className=" flex ">
         <div
           color="transparent"
-          className="flex flex-row items-center gap-8"
+          className="flex flex-row items-center gap-5 md:gap-8 "
         >
         <div    >
 
             <img
 
-                className={"w-[24rem] rounded-full"}
-                src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
+                className={"w-[7rem] md:w-[24rem] rounded-full"}
+                src={CurrentUser?.photoURL}
                 alt="tania andrew"
             />
         </div>
@@ -44,12 +52,12 @@ import {
           <div className="flex w-full flex-col ">
             <div className="flex w-full">
               <Typography variant="h5" color="black" className="PlusJakartaSans-Bold">
-                Russel Gue Caponga
+                  {CurrentUser?.displayName}
               </Typography>
             </div>
-            <Typography variant="large" color="blue-gray" className="PlusJakartaSans-Medium">russeldeguzmangc@gmail.com</Typography>
+            <Typography variant="large" color="blue-gray" className="PlusJakartaSans-Medium">{CurrentUser?.email}</Typography>
             
-            <Typography variant="large" color="blue-gray" className="PlusJakartaSans-Medium">Passenger</Typography>
+            <Typography variant="large" color="blue-gray" className="PlusJakartaSans-Medium capitalize">{decryptedRole}</Typography>
           </div>
         </div>
       </div>

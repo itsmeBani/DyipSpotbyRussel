@@ -1,19 +1,25 @@
 import React from 'react'
 import SidebarWithContentSeparator from "../components/JeepLogs.jsx";
-import {ComplexNavbar} from "../components/Navbar.jsx";
+import NavList, {ComplexNavbar} from "../components/Navbar.jsx";
 
-import {Outlet} from "react-router-dom";
+import {NavLink, Outlet, useLocation} from "react-router-dom";
+import BottomTabs from "../components/BottomTabs.jsx";
 
 function _Layout() {
-  return (
+    const location = useLocation();
+
+    return (
       <div className=" h-[100dvh]  w-full flex flex-row">
         
         <div className="w-full flex flex-col  ">
 
           <div className="   flex flex-col h-full  w-full ">
-            <ComplexNavbar/>
+              <ComplexNavbar/>
 
-                   <Outlet/>
+                <div className={"h-full w-full relative"}>
+                    <Outlet/>
+                </div>
+              {location.pathname !== "/settings" && <BottomTabs />}
 
           </div>
 

@@ -9,6 +9,7 @@ import Settings from "./pages/Settings.jsx";
 import Landing from "./pages/Landing.jsx";
 import {useCookies} from "react-cookie";
 import CurrentUserProvider from "./ContextProvider/CurrentUser.jsx";
+import {LocationProvider} from "./ContextProvider/Location.jsx";
 const router = createBrowserRouter([
     {
         path: '/',
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/',
+                element: <Home />,
+            },
+            {
+                path: '/Active-Jeeps',
                 element: <Home />,
             },
             {
@@ -32,17 +37,13 @@ const router = createBrowserRouter([
 
 function App() {
     const [cookies, setCookie, removeCookie] = useCookies(['authentication-token']);
-    console.log(auth)
   return (
     <CurrentUserProvider>
-        {
-
-
-
-<RouterProvider router={router}/>
-
-        }
-
+        <LocationProvider>
+            {
+                cookies["authentication-token"] && cookies["role"] ? <RouterProvider router={router}/> : <Landing/>
+            }
+        </LocationProvider>
     </CurrentUserProvider>
   )
 }

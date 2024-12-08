@@ -1,6 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+:root {
+  --unit: 14px;
+  --unitHeader: 18px;
+  --minWidth: min(300px, 100vw);
+  --colorPrimary: #4264FB;
+  /* Add other variables */
+}
 /* For Chrome, Edge, Safari */
 ::-webkit-scrollbar {
     width: 8px; /* Width of the scrollbar */
@@ -58,10 +65,59 @@
 }
 
 
-
+.mapboxgl-ctrl-group {
+  background: #fff;
+  border-radius: 14px;
+}
 
 .swiper-slide {
   width: auto;
   height: unset;
   position: relative;
+}
+.mapboxgl-ctrl button.mapboxgl-ctrl-geolocate.mapboxgl-ctrl-geolocate-active .mapboxgl-ctrl-icon {
+  background-image: url("data:image/svg+xml;charset=utf-8,<svg viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg' fill='%23ffffff'><path d='M10 4C9 4 9 5 9 5v.1A5 5 0 0 0 5.1 9H5s-1 0-1 1 1 1 1 1h.1A5 5 0 0 0 9 14.9v.1s0 1 1 1 1-1 1-1v-.1a5 5 0 0 0 3.9-3.9h.1s1 0 1-1-1-1-1-1h-.1A5 5 0 0 0 11 5.1V5s0-1-1-1zm0 2.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 1 1 0-7z'/><circle id='dot' cx='10' cy='10' r='2'/><path id='stroke' d='M14 5l1 1-9 9-1-1 9-9z' display='none'/></svg>")
+}
+.mapboxgl-ctrl button.mapboxgl-ctrl-geolocate .mapboxgl-ctrl-icon {
+  background-image: url("data:image/svg+xml;charset=utf-8,<svg viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg' fill='%23ffffff'><path d='M10 4C9 4 9 5 9 5v.1A5 5 0 0 0 5.1 9H5s-1 0-1 1 1 1 1 1h.1A5 5 0 0 0 9 14.9v.1s0 1 1 1 1-1 1-1v-.1a5 5 0 0 0 3.9-3.9h.1s1 0 1-1-1-1-1-1h-.1A5 5 0 0 0 11 5.1V5s0-1-1-1zm0 2.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 1 1 0-7z'/><circle id='dot' cx='10' cy='10' r='2'/><path id='stroke' d='M14 5l1 1-9 9-1-1 9-9z' display='none'/></svg>")
+}
+
+.mbx0eba1d72--SearchBox {
+  --unit: unset;
+  --unitHeader: unset;
+  --minWidth: unset;
+  --spacing: unset;
+  --padding: unset;
+  padding-top: 100px;
+  --paddingFooterLabel: unset;
+  --paddingModal: unset;
+  --colorText: unset;
+  --colorPrimary: unset;
+  --colorSecondary: unset;
+  --colorBackground: unset;
+  --colorBackgroundHover: unset;
+  --colorBackgroundActive: unset;
+  --colorBackdrop: unset;
+  --border: unset;
+  --borderRadius: unset;
+  --boxShadow: 1px 1px 1px 1px;
+  --lineHeight: unset;
+  --fontFamily: unset;
+  --fontWeight: unset;
+  --fontWeightSemibold: unset;
+  --fontWeightBold: unset;
+  --duration: unset;
+  --curve: unset;
+}
+.mbx0eeb8840--Geocoder, .mbx0eeb8840--SearchBox {
+
+
+
+  box-shadow:none;
+
+}
+.rdp-root {
+  --rdp-accent-color: #3083FF; /* Change the accent color to indigo. */
+  --rdp-accent-background-color: #3083FF; /* Change the accent background color. */
+  /* Add more CSS variables here. */
 }

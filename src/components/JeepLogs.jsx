@@ -27,22 +27,21 @@ import useScroll from "../CustomHooks/useScroll.jsx";
 import DailyPassenger from "../components/HomeComponents/DailyPassenger.jsx"
 import RecentTrips from "./HomeComponents/RecentTrips.jsx";
 
-export default function JeepLogs({isActive}) {
+export default function JeepLogs({isActive,DriverInformation,getTableDataFromOneTable}) {
     const {isDragging, handleMouseDown, handleMouseUp, handleMouseMove} = useScroll();
 
 
     const [activeLogsIndex, setActiveLogsIndex] = useState(0)
 
 
-
     function RenderLogs() {
         switch (activeLogsIndex) {
             case  0:
-                return <DailyPassenger/>
+                return <DailyPassenger getTableDataFromOneTable={getTableDataFromOneTable} PassengersData={DriverInformation} />
             case  1:
-                return <TravelHistory/>
+                return <TravelHistory getTableDataFromOneTable={getTableDataFromOneTable} DriverInformation={DriverInformation}/>
             case  2:
-                return <RecentTrips/>
+                return <RecentTrips getTableDataFromOneTable={getTableDataFromOneTable} RecentTrips={DriverInformation}/>
         }
     }
 
@@ -71,9 +70,9 @@ export default function JeepLogs({isActive}) {
 
     return (
         <div
-            className={` flex-col flex h-full  flex-1 absolute overflow-hidden  shadow-none    select-none rounded-none  gap-1  w-full  pl-4  ${isActive ? "opacity-100" : " opacity-70"}`}>
+            className={` flex-col flex h-full  flex-1 absolute overflow-hidden   shadow-none    select-none rounded-none  gap-0  w-full  pl-4  ${isActive ? "opacity-100" : " opacity-100"}`}>
             <div
-                className="p-3 flex w-full gap-2 h-auto overflow-x-hidden no-scrollbar "
+                className=" flex w-full gap-2 pb-3 pt-3 h-auto overflow-x-hidden no-scrollbar "
                 style={{cursor: isDragging ? 'grabbing' : 'grab'}}
                 onMouseDown={handleMouseDown}
                 onMouseLeave={handleMouseUp}
@@ -88,7 +87,7 @@ export default function JeepLogs({isActive}) {
 
                       <button key={index} onClick={() => {
                         HandleSetActiveLogs(item?.id)
-                      }} className={`whitespace-nowrap shadow-md py-2 px-4 rounded-full  ${item?.id === activeLogsIndex && "text-white bg-[#3083FF]"}  "`}>
+                      }} className={`whitespace-nowrap text-gray-600 flex place-items-center md:text-[13px]  shadow-md PlusJakartaSans-Medium md:pt-3 md:pt-3 md:pb-3 pt-2 pb-2 px-3 text-[10px] rounded-full  ${item?.id === activeLogsIndex && "text-white bg-[#3083FF]"}  "`}>
                         {item?.name}
                       </button>
                   )
@@ -97,7 +96,7 @@ export default function JeepLogs({isActive}) {
             </div>
 
 
-            <div className="h-full  overflow-y-auto   w-full    flex">
+            <div className="h-full  overflow-y-hidden   w-full    flex">
 
                 {RenderLogs()}
 

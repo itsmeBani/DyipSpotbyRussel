@@ -15,7 +15,7 @@ import  {ExclamationTriangleIcon} from   "@heroicons/react/24/solid"
           color="transparent"
           floated={false}
           shadow={false}
-          className="mx-0 mt-0 p-4 flex items-center gap-4  "
+          className="mx-0 mt-0 p-4  flex items-center gap-4  "
         >
      <ExclamationTriangleIcon className="w-10" color={"rgba(30,63,174,0.82)"}/>
           <div className="flex w-full gap-0.5">
@@ -31,7 +31,7 @@ import  {ExclamationTriangleIcon} from   "@heroicons/react/24/solid"
         </CardHeader>
 
 
-      <div className="px-10 pb-10 flex">
+      <div className="px-3 md:px-10 pb-4 md-pb-10  flex">
           {children}
       </div>
       </Card>

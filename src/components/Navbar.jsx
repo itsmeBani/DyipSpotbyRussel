@@ -33,6 +33,7 @@ import {signOut} from "firebase/auth";
 import {auth} from "../api/firebase-config.js";
 import {useCookies} from "react-cookie";
 import {CurrentUserContext} from "../ContextProvider/CurrentUser.jsx";
+import JeepIcon from "./JeepIcon.jsx";
 
 
 
@@ -42,11 +43,12 @@ function ProfileMenu() {
 
   const {CurrentUser}=useContext(CurrentUserContext)
 
-  console.log(CurrentUser)
+
   const Logout=async ()=>{
     try {
       await signOut(auth)
       removeCookie('authentication-token')
+      removeCookie('role')
     }catch (e) {}
   }
   const profileMenuItems = [
@@ -133,7 +135,7 @@ const navListItems = [
   },
   {
     label: "Track",
-    icon: TruckIcon,
+    icon: JeepIcon,
     route: "track"
   },
   {
@@ -143,10 +145,10 @@ const navListItems = [
   },
 ];
 
-function NavList() {
+export default function NavList() {
   return (
 
-      <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
+      <ul className="mt-2  max-w-[500px] hidden md:flex mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
         {navListItems.map(({ label, icon, route}, key) => (
             <Link to={route}  key={label}>
 
@@ -179,14 +181,15 @@ export function ComplexNavbar() {
 
 
   return (
-      <div className="px-5 py-3  shadow" >
+      <div className="px-5 py-3 shadow hidden md:block" >
         <div className=" w-full gap-5  place-items-center justify-between flex text-blue-gray-900">
  
 <img src={Logo} className="w-28" />
         <div className="flex flex-row gap-5">  
           <NavList />
 
-<ProfileMenu /></div>
+<ProfileMenu />
+        </div>
         </div>
 </div>
    
