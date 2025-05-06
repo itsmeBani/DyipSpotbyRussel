@@ -9,7 +9,6 @@ const useFetchLocation = (tablename, id ) => {
         let unsubscribe;
 
         if (id) {
-            // Fetch only a specific document if id is provided
             const docRef = doc(db, tablename, id);
             unsubscribe = onSnapshot(docRef, (docSnapshot) => {
                 if (docSnapshot.exists()) {
@@ -18,11 +17,10 @@ const useFetchLocation = (tablename, id ) => {
                         ...docSnapshot.data(),
                     });
                 } else {
-                    setLocationData(null); // Handle the case where the document doesn't exist
+                    setLocationData(null);
                 }
             });
         } else {
-            // Fetch all documents if no id is provided
             unsubscribe = onSnapshot(collection(db, tablename), (snapshot) => {
                 const Data = snapshot.docs.map((doc) => ({
                     id: doc.id,

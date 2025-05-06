@@ -9,14 +9,9 @@ import {InformationCircleIcon} from "@heroicons/react/24/outline";
 
 function HeaderPopup(props) {
 
-
     const {
-        mapRef,
-        FallowDriver,
         activeJeepId,
         JeepStatusModal,
-        setJeepStatusModal,
-        setActiveJeepId,
         openBottomSheet,
         setOpenBottomSheet
     } = useContext(JeepSatatusContext)

@@ -162,7 +162,7 @@ function UserBottomSheet(props) {
                                    <Typography  className="PlusJakartaSans-Bold text-[15px] leading-3 " color="gray">
 
                                        <span
-                                           className="PlusJakartaSans-Bold text-[19px] leading-3 text-[#3083FF]">{jeepData?.passengers}</span>/10
+                                           className="PlusJakartaSans-Bold text-[19px] leading-3 text-[#3083FF]">{jeepData?.passengers}</span>/21
 
                                    </Typography>
                                 </div>

@@ -9,9 +9,10 @@ import Mapstyle from "../components/SettingsComponent/Mapstyle.jsx";
 import RequestStatus from "../components/SettingsComponent/RequestStatus.jsx";
 import {CurrentUserContext} from "../ContextProvider/CurrentUser.jsx";
 import useCheckRole from "../CustomHooks/useCheckRole.js";
-import {collection, onSnapshot, query, where} from "firebase/firestore";
+import {collection, getDoc, onSnapshot, query, where} from "firebase/firestore";
 import {db} from "../api/firebase-config.js";
 import EditProfile from "../components/SettingsComponent/Profile.jsx";
+import {getUserDocRefById} from "../ReusableFunctions.js";
 
 function Settings(props) {
     const [AlreadyApply, setAlreadyApply] = useState(false)
@@ -20,6 +21,14 @@ function Settings(props) {
     const {CurrentUser} = useContext(CurrentUserContext)
     const encryptionKey = import.meta.env.VITE_ENCRYPTION_KEY;
     const decryptedRole = useCheckRole('role', encryptionKey);
+
+
+
+
+
+
+
+
 
     useEffect(() => {
         setLoading(true);
